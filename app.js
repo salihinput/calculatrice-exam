@@ -1,11 +1,6 @@
 const display = document.getElementById("display");
 const buttons = document.querySelectorAll(".btn-calc");
 let expression = "";
-const operators = ["+", "-", "*", "/"];
-
-function isOperator(value) {
-  return operators.includes(value);
-}
 
 function formatExpression(value) {
   if (!value) {
@@ -45,24 +40,16 @@ function appendToDisplay(value) {
     updateDisplay("0");
   }
 
-  if (expression === "" && isOperator(value)) {
+  if (expression === "" && ["+", "-", "*", "/"].includes(value)) {
     return;
   }
 
-  if (expression === "0" && !isOperator(value)) {
+  if (expression === "0" && !["+", "-", "*", "/"].includes(value)) {
     expression = "";
   }
 
-  const lastChar = expression.slice(-1);
-  if (isOperator(lastChar) && isOperator(value)) {
-    expression = expression.slice(0, -1) + value;
-    updateDisplay(formatExpression(expression));
-    return;
-  }
-
   if (value === ",") {
-    const currentNumber = expression.split(/[+\-*/]/).pop();
-    if (currentNumber.includes(".")) {
+    if (expression.includes(".")) {
       return;
     }
     expression += ".";

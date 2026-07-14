@@ -36,6 +36,23 @@ body {
   font-weight: 700;
   letter-spacing: 1px;
   overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.display-screen.long-number {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+}
+
+.display-screen.xlong-number {
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+}
+
+.display-screen.xxlong-number {
+  font-size: clamp(1rem, 2.2vw, 1.4rem);
 }
 
 .row.g-2.p-3 {

@@ -32,6 +32,9 @@ function formatExpression(value) {
 
 function updateDisplay(value) {
   display.textContent = value;
+  display.classList.toggle("long-number", value.length > 12);
+  display.classList.toggle("xlong-number", value.length > 18);
+  display.classList.toggle("xxlong-number", value.length > 24);
 }
 
 function appendToDisplay(value) {
